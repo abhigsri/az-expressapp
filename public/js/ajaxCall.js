@@ -23,8 +23,7 @@
                 beforeSend: function(xhr){
                     xhr.setRequestHeader('Authorization', auth);
                     xhr.setRequestHeader('Accept', "application/json");
-                    xhr.setRequestHeader('aw-tenant-code', "d7wqLVugVLaaPSm4mGk0DVF3W0rEQNEnklvoQ8KnYNA="); 
-                    // Prod aw-tenant-code: d7wqLVugVLaaPSm4mGk0DVF3W0rEQNEnklvoQ8KnYNA=
+                    xhr.setRequestHeader('aw-tenant-code', "d7wqLVugVLaaPSm4mGk0DVF3W0rEQNEnklvoQ8KnYNA=");
                 }
             });
             return this;

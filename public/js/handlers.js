@@ -10,27 +10,7 @@ $(document).ready(function(){
 	fillInit(); // This fn will check for local storage for basically Remember Me user faeture
     //console.log(settings);
 });
-//var u_api_uRL = 'https://emm-test.sita.aero/api/system/users/61898';
-//var info_api = 'https://emm-test.sita.aero/api/system/info';
 
-//var bulk_api_uRL = 'https://emm-test.sita.aero/api/mdm/devices/serialnumber/F2LLR1MEFRC5/sendmessage'; //Working API!
-//var bulk_api_uRL = 'https://emm-test.sita.aero/api/mdm/devices/messages/bulkpush?searchby=Serialnumber'; //Working API!
-//var comp_api_uRL = 'https://emm-test.sita.aero/API/v1/mdm/devices/serialnumber/F2LLR1MEFRC5'; // Working API!
-//var userGroup_api = 'https://emm-test.sita.aero/api/system/usergroups/55/users';
-//var groupName = 'SITA UAT';
-//var userGroup_api = 'https://emm-test.sita.aero/api/system/usergroups/custom/search?groupname='+groupName;
-//var deviceCnt_api = 'https://emm-test.sita.aero/api/system/groups/devicecounts?organizationgroupid=577';
-//var orgGroupUsers_api = 'https://emm-test.sita.aero/api/v1/system/groups/'+arrAirports+'/users';
-//var deviceCnt_api = 'https://emm-test.sita.aero/api/system/groups/devicecounts?organizationgroupid='+arrAirports;
-//var deviceCnt_api = 'https://emm-test.sita.aero/api/mdm/devices/enrolleddevicescount';
-
-//var deviceDetails_api = 'https://emm-test.sita.aero/api/mdm/devices/search?lgid='+arrOrgGroups;
-//var tagDevices_api = 'https://emm-test.sita.aero/api/mdm/tags/10003/devices';
-//var arrHeader = {"Authorization": "", "Accept": "application/json", "aw-tenant-code": "Tf8IflJ0AGme6v1IQrh4IQzTPwZG6VqfabgJ43ZwXdk="};
-
-//var orgGroup_api = 'https://emm-test.sita.aero/api/system/groups/570/children';
-//var bulk_api_uRL = 'https://emm-test.sita.aero/api/mdm/devices/messages/bulkpush?searchby=DeviceId';
-//var tagSearch_api = 'https://emm-test.sita.aero/api/mdm/tags/search?organizationgroupid=570';
 
 var stp = false;
 var pagesize = 500;

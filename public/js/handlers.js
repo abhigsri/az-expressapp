@@ -66,11 +66,6 @@ function fillInit(){
 }
 
 function regHand(){
-    /*
-    var uName, uPwd;               
-    uName = $('#txtUserName').val()  == '' ? 'XSCORP\admin.as4' : $('#txtUserName').val();
-    uPwd = $('#txtPassword').val()  == '' ? '$ita@123' : $('#txtPassword').val();
-    */
     
 	// Home page login btn handler
     $('#btnLogin').tap(function(e){

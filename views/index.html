@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>SITA EMM</title>
+<!-- Styles -->
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/custom.css" rel="stylesheet">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+<!-- Start of login page -->
+<div data-role="page" id="login" class="bg-info">
+	<div role="main" class="ui-content">
+		<div class="container">
+			<div class="Main-div">
+                <div class="logoclass-port clearfix pdTop25">
+					<img src="css/images/login.png" class="img-responsive" align="right">
+				</div>
+				
+				<div class="panel-body">
+                    <div id="" class="alertDiv"></div>
+                    <br>
+					<form class="form-view" id="loginform">
+						<div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                            <input type="email" id='txtUserName' placeholder="Email- Address" value="XSCORP\admin.as4" class="form-control"> 
+                        </div>
+						<div class="input-group">
+                            <span class="input-group-addon"><i id="pwdIcon" class="fa fa-key fa-fw"></i></span>
+                            <input type="password" id='txtPassword' placeholder="Password" value="$ita@123" class="form-control">
+                        </div>
+						<div class="clearfix"></div>
+						<div class="input-group disable-action">
+							<input type="checkbox" name="remMe" id="remMe" class="custom" data-mini="true" />
+							<label for="remMe">Remember me</label>
+						</div>
+                        <div class="input-group flt-right">
+                            <span class="btn-login"><a href="#" id="btnLogin" data-transition="slide" class="btn btn-primary btn-small" ><i class="fa fa-unlock-alt"> <b class="padding-15">LogIn</b></i></a></span>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="pushNotification" class="bg-info">
+    <div role="main" class="ui-content">
+        <div class="container">
+            
+            <div class="Main-div">
+                
+                <div class="panel-body">
+                    <span id="backBtn" class="btn btn-primary btn-small"><i class="fa fa-chevron-left fa-lg"></i></span>
+                    <p>&nbsp;</p>
+                    <div id="" class="alertDiv"></div>
+                    <div class="col-xs-12 padding-10">
+                        <p class="col-xs-4"><span onclick="InitCall();"><i class="fa fa-refresh fa-2x"></i></span></p>
+                        <p class="col-xs-4"><span data-toggle="modal" data-target="#advSearch"><i class="fa fa-search-plus fa-2x"></i></span></p>
+                        <p class="col-xs-4"><span data-toggle="modal" data-target="#advAppSearch"><i class="fa fa-apple fa-2x"></i></span></p>
+                        <p>&nbsp;</p>
+                    </div>
+                    
+                    <div class="padding-10 row">
+                        <br><br>
+                        <div class="col-md-3" id="divorgGroups"></div>
+                        <br>
+                        <div class="col-md-3" id="divuserGroups"></div>
+                        <br>
+                        <div class="col-md-3" id="divorgTags"></div>
+                        <br>
+                        <div class="col-md-3" id="divorgApps"></div>
+                    </div>
+                    <div class="padding-10 row">
+                        <div class="col-md-6" id="divorgDevices"></div>
+                    </div>
+                    <div class="col-xs-12 padding-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
+                            <textarea id='txtPN' rows="4" cols="50" placeholder="Push notification characters count should not exceed 206." class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 padding-10"><span class="info-charCount">206</span> characters remaining.</div>
+                    <div class="clearfix"></div>
+                    <!--<div class="col-xs-12 padding-10">
+                        <span class="btn-login"><a href="#" id="" data-transition="slide" class="btn btn-primary btn-small" ><i class="fa fa-paper-plane"> <b class="padding-15">PUSH</b></i></a></span>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer  data-role="footer" data-position="fixed">
+        <div class=""><a href="#" id='btnPush' data-transition="slide" class="btn btn-primary btn-block"><b>PROCEED</b></a></div>
+    </footer>
+</div>
+<!-- Modal -->
+    <div class="modal fade" id="ajaxload" role="dialog">        
+        <div class="ajaxload" ></div>
+    </div>
+    <div class="modal fade" id="advSearch" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="width: auto;">&times;</button>
+                    <h3 class="modal-title">Advance Search:</h3>
+                    <hr>
+                </div>
+                
+                <div class="modal-body">
+                            
+                    <form id="adv-search-form" name="adv-search-form" >
+                        <div class="form-group">
+                            <label for="user">User:</label>
+                            <input type="text" class="form-control" id="user" name="user" placeholder="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model:</label>
+                            <!--<input type="text" class="form-control" id="model" name="model" placeholder="android/iPhone/windows">-->
+                            
+                            <div class="ui-field-contain">
+                                
+                                <select name="model" id="model" style="width: 100%;height: 45px;">
+                                    <option value="android">Android</option>
+                                    <option value="iPhone" selected="selected">iPhone</option>
+                                    <option value="windows">Windows</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="platform">Platform:</label>
+                            <!--<input type="text" class="form-control" id="platform" name="platform" placeholder="Android/Apple/Windows">-->
+                            
+                            <div class="ui-field-contain">
+                                
+                                <select name="platform" id="platform" style="width: 100%;height: 45px;">
+                                    <option value="Android">Android</option>
+                                    <option value="Apple" selected="selected">Apple</option>
+                                    <option value="Windows">Windows</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ownership">Ownership:</label>
+                            <!--<input type="text" class="form-control" id="ownership" name="ownership" placeholder="c/e">-->
+                            
+                            <div class="ui-field-contain">
+                                
+                                <select name="ownership" id="ownership" style="width: 100%;height: 45px;">
+                                    <option value="e">Employee Owned</option>
+                                    <option value="c" selected="selected">Corporate Owned</option>
+                                    
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="lgid">Lgid:</label>
+                            <input type="text" class="form-control" id="lgid" name="lgid" placeholder="OG Id as 577">
+                        </div>
+                        <div class="form-group">
+                            <label for="compliantstatus">Compliantstatus:</label>
+                            <!--<input type="text" class="form-control" id="compliantstatus" name="compliantstatus" placeholder="true/false">-->
+                            
+                            <div class="ui-field-contain">
+                                
+                                <select name="compliantstatus" id="compliantstatus" style="width: 100%;height: 45px;">
+                                    <option value="false">False</option>
+                                    <option value="true" selected="selected">True</option>
+                                    
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="seensince">Seensince:</label>
+                            <input type="text" class="form-control" id="seensince" name="seensince" placeholder="2016-10-28T12:27:18.243">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastseen">Lastseen:</label>
+                            <input type="text" class="form-control" id="lastseen" name="lastseen" placeholder="2016-10-28T12:27:18.243">
+                        </div>
+                        <div class="form-group">
+                            <label for="page">Page:</label>
+                            <input type="text" class="form-control" id="page" name="page" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="pagesize">Pagesize:</label>
+                            <input type="text" class="form-control" id="pagesize" name="pagesize" value="6000">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" >Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="advAppSearch" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="width: auto;">&times;</button>
+                    <h3 class="modal-title">Advance Application Search:</h3>
+                    <hr>
+                </div>
+                
+                <div class="modal-body">
+                    <form id="adv-app-search-form" name="adv-app-search-form" >
+                        <div class="form-group">
+                            <label for="user">Applicayion Type:</label>
+                            <!--<input type="text" class="form-control" id="applicationtype" name="applicationtype" placeholder="Internal/Public">-->
+                            <div class="ui-field-contain">
+                                <select name="applicationtype" id="applicationtype" style="width: 100%;height: 45px;">
+                                    <option value="Public">Public</option>
+                                    <option value="Internal" selected="selected">Internal</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Applicayion Name:</label>
+                            <input type="text" class="form-control" id="applicationname" name="applicationname" placeholder="Application name">
+                        </div>
+                        <div class="form-group">
+                            <label for="compliantstatus">Platform:</label>
+                            <!--<input type="text" class="form-control" id="platform" name="platform" placeholder="Android/Apple/Windows">-->
+                            <div class="ui-field-contain">
+                                <select name="platform" id="" style="width: 100%;height: 45px;">
+                                    <option value="all" selected="all">All</option>
+                                    <option value="Android">Android</option>
+                                    <option value="Apple">Apple</option>
+                                    <option value="Windows">Windows</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="platform">Category:</label>
+                            <!--<input type="text" class="form-control" id="category" name="category" placeholder="Application category">-->
+                            <div class="ui-field-contain">
+                                <select name="Category" id="Category" style="width: 100%;height: 45px;">
+                                    <option value="all" selected="all">All</option>
+                                    <option value="book">Book</option>
+                                    <option value="business">Business</option>
+                                    <option value="education">Education</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="games">Games</option>
+                                    <option value="Healthcare & Fitness">Healthcare & Fitness</option>
+                                    <option value="lifestyle">Lifestyle</option>
+                                    <option value="medical">Medical</option>
+                                    <option value="misic">Music</option>
+                                    <option value="navigation">Navigation</option>
+                                    <option value="news">News</option>
+                                    <option value="Office 365">Office 365</option>
+                                    <option value="photography">Photography</option>
+                                    <option value="productivity">Productivity</option>
+                                    <option value="reference">Reference</option>
+                                    <option value="Social Networking">Social Networking</option>
+                                    <option value="sports">Sports</option>
+                                    <option value="travel">Travel</option>
+                                    <option value="utilities">Utilities</option>
+                                    <option value="weather">Weather</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ownership">BundleId:</label>
+                            <input type="text" class="form-control" id="bunleid" name="bunleid" placeholder="Bunleid/Packageid">
+                        </div>
+                        <div class="form-group">
+                            <label for="lgid">Location GroupId:</label>
+                            <input type="text" class="form-control" id="locationgroupid" name="locationgroupid" placeholder="Locationgroupid">
+                        </div>
+                        
+                        
+                        <button type="submit" class="btn btn-primary btn-block" >Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- All Scripts for the app -->
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type='text/javascript' src='js/ajaxCall.js'></script>
+<script type='text/javascript' src='js/handlers.js'></script>
+<script>
+    
+    $(document).ajaxStart(function(){
+        $('#ajaxload').modal('show');
+    }).ajaxComplete(function(){
+        $('#ajaxload').modal('hide');
+    });
+</script>
+
+<script type="text/javascript">
+    
+// 86acbd31cd7c09cf30acb66d2fbedc91daa48b86:1533829628.17
+!function(n,t,c,e,u){function r(n){try{f=n(u)}catch(n){return h=n,void i(p,n)}i(s,f)}function i(n,t){for(var c=0;c<n.length;c++)d(n[c],t);
+}function o(n,t){return n&&(f?d(n,f):s.push(n)),t&&(h?d(t,h):p.push(t)),l}function a(n){return o(!1,n)}function d(t,c){
+n.setTimeout(function(){t(c)},0)}var f,h,s=[],p=[],l={then:o,catch:a,_setup:r};n[e]=l;var v=t.createElement("script");
+v.src=c,v.async=!0,v.id="_uasdk",v.rel=e,t.head.appendChild(v)}(window,document,'js/ua-sdk.min.js',
+'UA', {
+appKey: 'PKCvp9VvR4i16sP9IdNbKg',
+token: 'MTpQS0N2cDlWdlI0aTE2c1A5SWROYktnOktVRjQzRlJSNWQtM0JRMGMwZTk5U3lrNllRRU1RbkdtMmE1dXZYTlJqMnM',
+vapidPublicKey: 'BPi38Vq-UDmJHknVlWnPyCFBBFt4APKf7SZixMzn5XQvwUDTEsu40QYiejW9pHeqbMf2-Bs6au6nYhtuqfkbe5w='
+});
+
+UA.then(function(sdk) {
+    sdk.register();
+    //console.log(sdk.channel);
+}).catch(function(err) {
+console.log(err)
+})
+    
+UA.then(function(sdk) {
+    sdk.addEventListener('channel', function(ev) {
+        ev.channel === sdk.channel;
+        console.log(sdk.channel);
+    })
+})
+
+</script>
+</body>
+</html>

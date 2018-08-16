@@ -489,7 +489,7 @@ function Settings(user, pswd, remembered, baseURL, appVersion){
     this.pwd = pswd;
     this.remember = remembered;
     
-    this.baseURI = 'https://emm.sita.aero/api/';
+    this.baseURI = 'https://example.com/api/';
     this.appVersion = '1.0.0';
     
     this.save = function(){
